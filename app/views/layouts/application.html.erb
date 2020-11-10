@@ -16,7 +16,27 @@
   <% if flash[:alert] %>
   <p><%= alert %>
   <% end %>
-  
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand font-weight-bolder" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold text-white" href="#">Posts <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+      <%= link_to "SignUp",  new_user_registration_path, class: "btn btn-light mr-3 font-weight-bold"%>
+        <!--<button type="button" class="btn btn-light mr-3 font-weight-bold">SignUp</button>-->
+      </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-light font-weight-bold">SignIn</button>
+      </li>
+    </ul>
+  </div>
+</nav>
     <%= yield %>
   </body>
 </html>
