@@ -17,7 +17,7 @@
   <p><%= alert %>
   <% end %>
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand font-weight-bolder" href="#">Navbar</a>
+  <%= link_to "POSTS", posts_path, class: "navbar-brand font-weight-bolder" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -25,14 +25,13 @@
   <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link font-weight-bold text-white" href="#">Posts <span class="sr-only">(current)</span></a>
+        <%= link_to "SignOut", destroy_user_session_path, :method => :delete, class: "btn btn-light mr-3 font-weight-bold" %>
       </li>
       <li class="nav-item">
       <%= link_to "SignUp",  new_user_registration_path, class: "btn btn-light mr-3 font-weight-bold"%>
-        <!--<button type="button" class="btn btn-light mr-3 font-weight-bold">SignUp</button>-->
       </li>
       <li class="nav-item">
-        <button type="button" class="btn btn-light font-weight-bold">SignIn</button>
+        <%= link_to "SignIn", user_session_path, class: "btn btn-light font-weight-bold"%>
       </li>
     </ul>
   </div>
