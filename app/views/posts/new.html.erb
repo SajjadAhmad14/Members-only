@@ -1,8 +1,8 @@
-
-<%= form_with(url: "/search", method: "get") do %>
-  <%= label_tag(:title, "Title:") %>
-  <%= text_field_tag(:title) %><br>
-  <%= label_tag(:body, "Body:") %>
-  <%= text_area_tag(:body, "Hi, nice site", size: "24x6") %><br>
-  <%= submit_tag("Create") %>
-<% end %>
+<form action="/posts" method="post" accept-charset="UTF-8">
+  <label for="title">Title:</label>
+  <input type="text" id="title" name="title"><br><br>
+  <label for="body">Body:</label>
+  <input type="text" id="body" name="body"><br><br>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" value="Submit">
+</form>
