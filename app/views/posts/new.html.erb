@@ -1,8 +1,6 @@
-<form action="/posts" method="post" accept-charset="UTF-8">
-  <label for="title">Title:</label>
-  <input type="text" id="title" name="title"><br><br>
-  <label for="body">Body:</label>
-  <input type="text" id="body" name="body"><br><br>
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="submit" value="Submit">
-</form>
+<%= form_for @post do |f| %>
+  Title: <%= f.text_field :title %><br />
+  Body: <%= f.text_area(:body, size: '20x10') %><br>
+  <%= f.submit %>
+<% end %>
+
