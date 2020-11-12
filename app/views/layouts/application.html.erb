@@ -4,12 +4,46 @@
     <title>MembersOnly</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
-  </body>
-</html>
+    <% if flash[:notice] %>
+      <p><%= notice %></p>
+    <% end %>
+    <% if flash[:alert] %>
+      <p><%= alert %>
+      <% end %>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <%= link_to "POSTS", posts_path, class: "navbar-brand font-weight-bolder" %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item mr-auto">
+              <% if user_signed_in? %>
+                <button class = "btn btn-light font-weight-bold my-2 my-sm-1"><%= link_to "SignOut", destroy_user_session_path, :method => :delete %>
+                <% end %>
+                </li>
+              </ul>
+              <ul class = "navbar-nav mr-auto">
+                <li class="nav-item">
+                  <%= link_to "NEW POST", new_post_path, class: "nav-link font-weight-bolder text-white" %>
+                </li>
+              </ul>
+              <ul class = "navbar-nav">
+              <% unless user_signed_in? %>
+                <li>
+                  <button class="btn btn-light font-weight-bold my-2 my-sm-1 mx-lg-2"><%= link_to "SignIn", user_session_path %></button>
+                </li>
+                <li>
+                  <button class="btn btn-light font-weight-bold my-2 my-sm-1"><%= link_to "SignUp",  new_user_registration_path%></button>
+                </li>
+                <% end %>
+                 
+            </div>
+          </nav>
+          <%= yield %>
+        </body>
+      </html>

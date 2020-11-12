@@ -1,0 +1,6 @@
+<%= form_for @post do |f| %>
+  Title: <%= f.text_field :title %><br />
+  Body: <%= f.text_area(:body, size: '20x10') %><br>
+  <%= f.submit %>
+<% end %>
+
