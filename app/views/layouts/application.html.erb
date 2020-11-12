@@ -22,21 +22,26 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item mr-auto">
-              <button class = "btn btn-light font-weight-bold my-2 my-sm-1"><%= link_to "SignOut", destroy_user_session_path, :method => :delete %>
-              </li>
-            </ul>
-            <ul class = "navbar-nav mr-auto">
-                  <li class="nav-item">
-              <%= link_to "NEW POSTS", new_post_path, class: "nav-link font-weight-bolder text-white" %>
-              </li>
-            </ul>
-            <ul class = "navbar-nav">
-              <li>
-                <button class="btn btn-light font-weight-bold my-2 my-sm-1 mx-lg-2"><%= link_to "SignIn", user_session_path %></button>
-              </li>
-              <li>
-                <button class="btn btn-light font-weight-bold my-2 my-sm-1"><%= link_to "SignUp",  new_user_registration_path%></button>
-              </li>
+              <% if user_signed_in? %>
+                <button class = "btn btn-light font-weight-bold my-2 my-sm-1"><%= link_to "SignOut", destroy_user_session_path, :method => :delete %>
+                <% end %>
+                </li>
+              </ul>
+              <ul class = "navbar-nav mr-auto">
+                <li class="nav-item">
+                  <%= link_to "NEW POSTS", new_post_path, class: "nav-link font-weight-bolder text-white" %>
+                </li>
+              </ul>
+              <ul class = "navbar-nav">
+              <% unless user_signed_in? %>
+                <li>
+                  <button class="btn btn-light font-weight-bold my-2 my-sm-1 mx-lg-2"><%= link_to "SignIn", user_session_path %></button>
+                </li>
+                <li>
+                  <button class="btn btn-light font-weight-bold my-2 my-sm-1"><%= link_to "SignUp",  new_user_registration_path%></button>
+                </li>
+                <% end %>
+                 
             </div>
           </nav>
           <%= yield %>
