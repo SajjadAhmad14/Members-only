@@ -4,38 +4,36 @@
     <title>MembersOnly</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-  <% if flash[:notice] %>
-  <p><%= notice %></p>
-  <% end %>
-  <% if flash[:alert] %>
-  <p><%= alert %>
-  <% end %>
- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <%= link_to "POSTS", posts_path, class: "navbar-brand font-weight-bolder" %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <%= link_to "SignOut", destroy_user_session_path, :method => :delete, class: "btn btn-light mr-3 font-weight-bold" %>
-      </li>
-      <li class="nav-item">
-      <%= link_to "SignUp",  new_user_registration_path, class: "btn btn-light mr-3 font-weight-bold"%>
-      </li>
-      <li class="nav-item">
-        <%= link_to "SignIn", user_session_path, class: "btn btn-light font-weight-bold"%>
-      </li>
-    </ul>
-  </div>
-</nav>
-    <%= yield %>
-  </body>
-</html>
+    <% if flash[:notice] %>
+      <p><%= notice %></p>
+    <% end %>
+    <% if flash[:alert] %>
+      <p><%= alert %>
+      <% end %>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <%= link_to "POSTS", posts_path, class: "navbar-brand font-weight-bolder" %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <button class = "btn btn-light font-weight-bold my-2 my-sm-1"><%= link_to "SignOut", destroy_user_session_path, :method => :delete %>
+              </li>
+            </ul>
+            <ul class = "navbar-nav">
+              <li>
+                <button class="btn btn-light font-weight-bold my-2 my-sm-1 mx-lg-2"><%= link_to "SignIn", user_session_path %></button>
+              </li>
+              <li>
+                <button class="btn btn-light font-weight-bold my-2 my-sm-1"><%= link_to "SignUp",  new_user_registration_path%></button>
+              </li>
+            </div>
+          </nav>
+          <%= yield %>
+        </body>
+      </html>

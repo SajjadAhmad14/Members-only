@@ -1,10 +1,18 @@
-<p>All posts</p>
-<%@posts.each do |post| %>
-<ul>
-<li><%= post.title %></li>
-<% if user_signed_in? %>
-<% user = User.find(post.user_id)%>
-<li><%= user.name %></li>
-<% end %>
-</ul>
-<% end %>
+<h1 class = "text-center font-weight-bold">All posts</h1>
+<div class = "container">
+  <%@posts.each do |post| %>
+    <div class="card text-center w-80">
+      <div class="card-header">
+        <% if user_signed_in? %>
+          <h3><%= post.user.name %></h3>
+        <% end %>
+      </div>
+      <div class="card-body mb-3">
+      <h3 class="card-title"><%= post.title %></h3>
+      <a href="#" class="btn btn-primary">Show Post</a>
+    </div>
+  <% end %>
+</div>
+</div>
+
+
